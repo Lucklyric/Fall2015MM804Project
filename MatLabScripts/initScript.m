@@ -1,10 +1,10 @@
 clear;
 % Load .mat data
-load('../MotionData/RealHand/pinchSnap.mat');
-load('../MotionData/RealHand/pinchData.mat');
+load('../MotionData/ArtHand/pinchSnap.mat');
+load('../MotionData/ArtHand/pinchData.mat');
 % Get Hand orientation of Snap
-SnapHand = realPinchSnap.clients{3}.frames{1}.hands{1};
 % Calculate the Error
-SensorHand = realPinchMotion.clients{2}.frames{1}.hands{1};
-
-error = edError(SnapHand,SensorHand);
+SnapHand = handSnap.clients{3}.frames{1}.hands{1};
+[sensor1,sensor1Fingers] = calculateED(SnapHand,handMotion.clients{2}.frames);
+[sensor2,sensor2Fingers] = calculateED(SnapHand,handMotion.clients{3}.frames);
+[sensor3,sensor3Fingers] = calculateED(SnapHand,handMotion.clients{4}.frames);
