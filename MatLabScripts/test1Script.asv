@@ -19,7 +19,5 @@ count = length(handMotion.clients{2}.frames);
 sensor1Matrix = zeros(0,11);
 sensor1Frames = handMotion.clients{2}.frames;
 for i = 1:count
-    if ~isempty(sensor1Frames{i}.hands)
-        sensor1Matrix(i,:) = returnFeatureVector(sensor1Frames{i}.hands{1},'default');
-    end
+    sensor1Matrix(i,:) = returnFeatureVector(sensor1Frames{i}.hands{1},'default');
 end
