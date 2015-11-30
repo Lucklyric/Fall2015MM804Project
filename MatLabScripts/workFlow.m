@@ -70,10 +70,10 @@ labelVector = trainingMatrix(:,1);
 instMatrix = trainingMatrix(:,2:end);
 
 %% Train the Model
-model = libsvmtrain(labelVector, instMatrix, '-c 2 -t 2 -b 1 ');
+model = libsvmtrain(labelVector, instMatrix, '-c 1 -t 2 -b 1 ');
 
 %% Test Trainning Data With differnt fusion policy
-for j=1:numOftraningFiles
+for j=1:length(testMotionMatFileNames)
     snapFiles{j} = load(strcat('../MotionData/MAT/',testSnapMatFileNames{j},'.mat'));
     motionFiles{j} = load(strcat('../MotionData/MAT/',testMotionMatFileNames{j},'.mat'));
     
