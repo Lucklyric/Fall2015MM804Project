@@ -22,7 +22,7 @@ elseif strcmp(type,'trend')
     featureVector(7:9) = -basis(3,:);
     featureVector(10) = dot(-basis(2,:),[0,1,0]);
     featureVector(11) = givenHand.confid;
-    featureVector(12:14) = givenHand.stableFactors;
+    featureVector(12:14) = givenHand.sideStableFactors;
 end
 
 end

@@ -1,7 +1,7 @@
 clear;tic;
 %% PreSetting
-snapJsonFileName = 'pinch2SnapA';
-motionJsonFileName = 'pinch2DataA';
+snapJsonFileName = 'grab4SnapA';
+motionJsonFileName = 'grab4DataA';
 %% Start Loding
 fprintf('Start loading json file...\n');
 startT = toc;

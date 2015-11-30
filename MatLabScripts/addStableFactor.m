@@ -23,6 +23,24 @@ for i=2:validCount-1;
        stableFactors(1,j) = dot(([preTime,vectorA(1,j)])/norm([preTime,vectorA(1,j)]),[nextTime,vectorB(1,j)]/norm([nextTime,vectorB(1,j)])); 
     end
     oldFrames{validFrames{i}.oldIndx}.hands{1}.stableFactors = stableFactors;
+    validFrames{i}.stableFactors = stableFactors;
 end
-frames = oldFrames(2:end-1);
+
+if sideLength~= 0
+    validFrames = validFrames(2:validCount-1);
+    validCount = length(validFrames);
+    for i=(1+sideLength):(validCount-sideLength)
+        sumVectors = zeros(1,3);
+        for j=(i-sideLength):(i-1)
+            sumVectors = sumVectors+validFrames{j}.stableFactors;
+        end
+        for j=(i+1):(i+sideLength);
+            sumVectors = sumVectors+validFrames{j}.stableFactors;
+        end
+        sideStableFactors = validFrames{i}.stableFactors-(sumVectors./(2*sideLength));
+        oldFrames{validFrames{i}.oldIndx}.hands{1}.sideStableFactors = sideStableFactors;
+    end
+end
+
+frames = oldFrames(2+sideLength:end-1-sideLength);
 end
