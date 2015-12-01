@@ -104,11 +104,16 @@ for j=1:length(testMotionMatFileNames)
         disp(proArray);
         fusionMotion.frames{i}.hands = frameArray(minIndex).hands;
     end
-    
     % Calculate the Error
     SnapHand = handSnap.clients{3}.frames{1}.hands{1};
     [sensor1(j,1),sensor1Fingers(j,:)] = calculateED(SnapHand,handMotion.clients{2}.frames(1:end-24));
     [sensor2(j,1),sensor2Fingers(j,:)] = calculateED(SnapHand,handMotion.clients{3}.frames(1:end-24));
     [fuse(j,1),fuseFingers(j,:)] = calculateED(SnapHand,fusionMotion.frames);
 end
-%clearvars -except sensor1 sensor2 sensor3 fuse  sensor1Fingers sensor2Fingers sensor3Fingers fuseFingers;
+sensor1mean = mean(sensor1);
+sensor2mean = mean(sensor2);
+fusemean = mean(fuse);
+sensor1Fingersmean = mean(sensor1Fingers);
+sensor2Fingersmean = mean(sensor2Fingers);
+fuseFingersmean = mean(fuseFingers);
+clearvars -except sensor1 sensor2 sensor3 fuse  sensor1Fingers sensor2Fingers  fuseFingers sensor1mean sensor2mean fusemean sensor1Fingersmean sensor2Fingersmean fuseFingersmean;
