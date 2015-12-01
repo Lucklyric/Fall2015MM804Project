@@ -1,5 +1,5 @@
 function [ meanError,meanFingersError ] = calculateED( snapHand,sensorFrames )
-%CALCULATEED Summary of this function goes here
+%CALCULATEED Calculate the ED error here 
 %   Detailed explanation goes here
 count = length(sensorFrames);
 error = 0;

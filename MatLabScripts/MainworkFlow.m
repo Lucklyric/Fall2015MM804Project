@@ -25,11 +25,9 @@ for i=1:numOftraningFiles
     snapHand = handSnap.clients{3}.frames{1}.hands{1};
     sensor1Frames = handMotion.clients{2}.frames;
     sensor2Frames = handMotion.clients{3}.frames;
-    %sensor3Frames = handMotion.clients{4}.frames;
     
     sensor1Frames = addStableFactor(sensor1Frames,sideLength,30);
     sensor2Frames = addStableFactor(sensor2Frames,sideLength,30);
-    %sensor3Frames = addStableFactor(sensor3Frames,5,30);
     
     count = length(sensor1Frames);
     
@@ -79,11 +77,9 @@ for j=1:length(testMotionMatFileNames)
     snapHand = handSnap.clients{3}.frames{1}.hands{1};
     sensor1Frames = handMotion.clients{2}.frames;
     sensor2Frames = handMotion.clients{3}.frames;
-   % sensor3Frames = handMotion.clients{4}.frames;
     
     sensor1Frames = addStableFactor(sensor1Frames,sideLength,30);
     sensor2Frames = addStableFactor(sensor2Frames,sideLength,30);
-    %sensor3Frames = addStableFactor(sensor3Frames,5,30);
     
     count = length(sensor1Frames);
     for i=1:count
@@ -113,7 +109,6 @@ for j=1:length(testMotionMatFileNames)
     SnapHand = handSnap.clients{3}.frames{1}.hands{1};
     [sensor1(j,1),sensor1Fingers(j,:)] = calculateED(SnapHand,handMotion.clients{2}.frames(1:end-24));
     [sensor2(j,1),sensor2Fingers(j,:)] = calculateED(SnapHand,handMotion.clients{3}.frames(1:end-24));
-    %[sensor3(j,1),sensor3Fingers(j,:)] = calculateED(SnapHand,handMotion.clients{4}.frames);
     [fuse(j,1),fuseFingers(j,:)] = calculateED(SnapHand,fusionMotion.frames);
 end
 %clearvars -except sensor1 sensor2 sensor3 fuse  sensor1Fingers sensor2Fingers sensor3Fingers fuseFingers;
