@@ -14,39 +14,16 @@ for i=1:count
 end
 
 for i=2:validCount-1;
-    basisN = inv(validFrames{i+1}.hands{1}.orientation);
-    basisP = inv(validFrames{i-1}.hands{1}.orientation);
-    basisC = inv(validFrames{i-1}.hands{1}.orientation);
-    directionP = -basisP(3,:);
-    directionN = -basisN(3,:);
-    directionC = -basisC(3,:);
-    vectorA = directionC - directionP;
+    directionA = inv(validFrames{i}.hands{1}.orientation)
+    directionB = 
+    vectorA = validFrames{i}.hands{1}.position - validFrames{i-1}.hands{1}.position;
     preTime = (validFrames{i}.oldIndx - validFrames{i-1}.oldIndx)*1/frequency;
-    vectorB = directionN - directionC;
+    vectorB = validFrames{i+1}.hands{1}.position - validFrames{i}.hands{1}.position;
     nextTime = (validFrames{i+1}.oldIndx - validFrames{i}.oldIndx)*1/frequency;
-    stableFactors = zeros(1,7);
+    stableFactors = zeros(1,3);
     for j = 1 : 3
        stableFactors(1,j) = dot(([preTime,vectorA(1,j)])/norm([preTime,vectorA(1,j)]),[nextTime,vectorB(1,j)]/norm([nextTime,vectorB(1,j)])); 
     end
-    
-    directionP = validFrames{i-1}.hands{1}.position;
-    directionN = validFrames{i+1}.hands{1}.position;
-    directionC = validFrames{i}.hands{1}.position;
-    vectorA = directionC - directionP;
-    preTime = (validFrames{i}.oldIndx - validFrames{i-1}.oldIndx)*1/frequency;
-    vectorB = directionN - directionC;
-    nextTime = (validFrames{i+1}.oldIndx - validFrames{i}.oldIndx)*1/frequency;
-    
-    for j = 1 : 3
-       stableFactors(1,3+j) = dot(([preTime,vectorA(1,j)])/norm([preTime,vectorA(1,j)]),[nextTime,vectorB(1,j)]/norm([nextTime,vectorB(1,j)])); 
-    end
-    
-    vectorA = dot(-basisC(2,:),[0,1,0]) - dot(-basisP(2,:),[0,1,0]);
-    preTime = (validFrames{i}.oldIndx - validFrames{i-1}.oldIndx)*1/frequency;
-    vectorB = dot(-basisN(2,:),[0,1,0]) - dot(-basisC(2,:),[0,1,0]);
-    nextTime = (validFrames{i+1}.oldIndx - validFrames{i}.oldIndx)*1/frequency;
-    
-    stableFactors(7) = dot(([preTime,vectorA])/norm([preTime,vectorA]),[nextTime,vectorB]/norm([nextTime,vectorB])); 
     oldFrames{validFrames{i}.oldIndx}.hands{1}.stableFactors = stableFactors;
     validFrames{i}.stableFactors = stableFactors;
 end
@@ -55,7 +32,7 @@ if sideLength~= 0
     validFrames = validFrames(2:validCount-1);
     validCount = length(validFrames);
     for i=(1+sideLength):(validCount-sideLength)
-        sumVectors = zeros(1,7);
+        sumVectors = zeros(1,3);
         for j=(i-sideLength):(i-1)
             sumVectors = sumVectors+validFrames{j}.stableFactors;
         end
