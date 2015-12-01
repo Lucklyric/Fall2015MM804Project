@@ -27,8 +27,8 @@ for i=1:numOftraningFiles
     sensor2Frames = handMotion.clients{3}.frames;
     %sensor3Frames = handMotion.clients{4}.frames;
     
-    sensor1Frames = addStableFactor(sensor1Frames,15,30);
-    sensor2Frames = addStableFactor(sensor2Frames,15,30);
+    sensor1Frames = addStableFactor(sensor1Frames,sideLength,30);
+    sensor2Frames = addStableFactor(sensor2Frames,sideLength,30);
     %sensor3Frames = addStableFactor(sensor3Frames,5,30);
     
     count = length(sensor1Frames);
@@ -81,8 +81,8 @@ for j=1:length(testMotionMatFileNames)
     sensor2Frames = handMotion.clients{3}.frames;
    % sensor3Frames = handMotion.clients{4}.frames;
     
-    sensor1Frames = addStableFactor(sensor1Frames,10,30);
-    sensor2Frames = addStableFactor(sensor2Frames,10,30);
+    sensor1Frames = addStableFactor(sensor1Frames,sideLength,30);
+    sensor2Frames = addStableFactor(sensor2Frames,sideLength,30);
     %sensor3Frames = addStableFactor(sensor3Frames,5,30);
     
     count = length(sensor1Frames);
