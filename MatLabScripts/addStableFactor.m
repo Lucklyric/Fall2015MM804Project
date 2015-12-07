@@ -1,8 +1,12 @@
 function [ frames ] = addStableFactor( oldFrames,sideLength,frequency )
-%ADDSTABLEFACTOR Summary of this function goes here
-%   Detailed explanation goes here
+%ADDSTABLEFACTOR According to the sidelenght and framerate 
+% Return the new frames with Sided Stabe Fact array
+% Author Xinyao(Alvin) Sun
+% Version 1.0.1  
 count = length(oldFrames);
 validCount = 0;
+
+%% Only works on valid frams means the hands list in the frame should not be empty
 for i=1:count
     hands = oldFrames{i}.hands;
     if ~isempty(hands)
@@ -13,6 +17,7 @@ for i=1:count
     end
 end
 
+%% Calculate the 7 SSF 
 for i=2:validCount-1;
     basisN = inv(validFrames{i+1}.hands{1}.orientation);
     basisP = inv(validFrames{i-1}.hands{1}.orientation);
@@ -51,6 +56,7 @@ for i=2:validCount-1;
     validFrames{i}.stableFactors = stableFactors;
 end
 
+%% According to the index from old frames list save sideStableFactors to original frames list
 if sideLength~= 0
     validFrames = validFrames(2:validCount-1);
     validCount = length(validFrames);

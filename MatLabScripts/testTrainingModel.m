@@ -1,3 +1,4 @@
+%% Test script for training the model
 % clear;
 % load('../MotionData/ArtHand/pinchSnap.mat');
 % load('../MotionData/ArtHand/pinchData.mat');

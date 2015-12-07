@@ -1,7 +1,10 @@
+%% Script for loading the JSON file and save to the .mat
+% Author Xinyao(Alvin) Sun
+% Version 1.0.1  
 clear;tic;
 %% PreSetting
-snapJsonFileName = 'grab4SnapA';
-motionJsonFileName = 'grab4DataA';
+snapJsonFileName = 'grab2SnapA';
+motionJsonFileName = 'grab2DataA';
 %% Start Loding
 fprintf('Start loading json file...\n');
 startT = toc;

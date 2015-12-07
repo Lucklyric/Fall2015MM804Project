@@ -1,6 +1,8 @@
 function [ featureVector ] = returnFeatureVector( givenHand,type )
-%RETURNFEATUREVECTOR Summary of this function goes here
-%   Detailed explanation goes here
+%RETURNFEATUREVECTOR Return the feature vector for the given hand with
+%diffent type of strategy
+% Author Xinyao(Alvin) Sun
+% Version 1.0.1  
 if isempty(type)
     type = 'default';
 end
