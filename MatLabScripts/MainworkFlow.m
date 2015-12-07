@@ -73,7 +73,7 @@ if ifTrainedNewModel
     %% Train the Model
     model = libsvmtrain(labelVector, instMatrix, '-s 0 -c 1000 -t 2  -b 1 ');
     if strcmp(featureVectorPolicy,'trend')
-        save(strcat('../TrainedModel/',preTrainedModelName,'_',featureVectorPolicy,'_',int2str(sideLength),'.mat'),'model');
+        save(strcat('../TrainedModel/',saveFileModelName,'_',featureVectorPolicy,'_',int2str(sideLength),'.mat'),'model');
     else
         save(strcat('../TrainedModel/',saveFileModelName,'_',featureVectorPolicy,'.mat'),'model');
     end
@@ -175,3 +175,7 @@ bestFingersmean = mean(bestFingers)';
 %clearvars -except sensor1 sensor2  fuse  sensor1Fingers sensor2Fingers  fuseFingers sensor1mean sensor2mean fusemean sensor1Fingersmean sensor2Fingersmean fuseFingersmean;
 clearvars -except  sensor1mean sensor2mean fusemean sensor1Fingersmean...
     sensor2Fingersmean fuseFingersmean worstCasemean bestCasemean worstFingersmean bestFingersmean;
+showResult = [bestCasemean,fusemean,sensor1mean,sensor2mean,worstCasemean];
+str = {'Bestcase'; 'Fuse'; 'Sensor1';'Sensor2';'Worstcase'};
+graph = (1-(showResult-bestCasemean)/(worstCasemean-bestCasemean));
+bar(graph),set(gca,'XTickLabel',str);

@@ -3,8 +3,8 @@
 % Version 1.0.1  
 clear;tic;
 %% PreSetting
-snapJsonFileName = 'grab2SnapA';
-motionJsonFileName = 'grab2DataA';
+snapJsonFileName = 'openSnapA';
+motionJsonFileName = 'openDataA';
 %% Start Loding
 fprintf('Start loading json file...\n');
 startT = toc;
