@@ -9,10 +9,10 @@ testMotionMatFileNames = {'pinchDataA','grabDataA','openDataA'}; % Evaluation Fi
 %testSnapMatFileNames = {'open2SnapA','pinch2SnapA','grab2SnapA'};
 %testMotionMatFileNames =  {'open2DataA','pinch2DataA','grab2DataA'};
 featureVectorPolicy = 'trend'; %'default','trend' % default is original version and trend is SSF version
-sideLength = 5; %Set the sided length
+sideLength = 1; %Set the sided length
 fusionPolicy = 'default'; %'default','mean','weight' % not implement 
 
 %% Model Part
-ifTrainedNewModel = 0; %If trained new model
-preTrainedModelName = 'model_demo'; %The name of the preTrained Model
+ifTrainedNewModel = 1; %If trained new model
+preTrainedModelName = 'model'; %The name of the preTrained Model
 saveFileModelName = 'model_demo'; %The name of the model want to save

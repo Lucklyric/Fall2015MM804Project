@@ -1,9 +1,9 @@
 %% The Main work flow script
 % Author Xinyao(Alvin) Sun
 % Version 1.0.1
-clear all;
+%clear all;
 %% PreLoad the globalSetting
-globalSetting;
+%globalSetting;
 %% End preLoad
 featureSize = 0;
 switch featureVectorPolicy
@@ -173,9 +173,16 @@ fuseFingersmean = mean(fuseFingers)';
 worstFingersmean = mean(worstFingers)';
 bestFingersmean = mean(bestFingers)';
 %clearvars -except sensor1 sensor2  fuse  sensor1Fingers sensor2Fingers  fuseFingers sensor1mean sensor2mean fusemean sensor1Fingersmean sensor2Fingersmean fuseFingersmean;
-clearvars -except  sensor1mean sensor2mean fusemean sensor1Fingersmean...
-    sensor2Fingersmean fuseFingersmean worstCasemean bestCasemean worstFingersmean bestFingersmean;
-showResult = [bestCasemean,fusemean,sensor1mean,sensor2mean,worstCasemean];
-str = {'Bestcase'; 'Fuse'; 'Sensor1';'Sensor2';'Worstcase'};
-graph = (1-(showResult-bestCasemean)/(worstCasemean-bestCasemean));
-bar(graph),set(gca,'XTickLabel',str);
+% clearvars -except  featureVectorPolicy sensor1mean sensor2mean fusemean sensor1Fingersmean...
+%     sensor2Fingersmean fuseFingersmean worstCasemean bestCasemean worstFingersmean bestFingersmean;
+% showResult = [bestCasemean,fusemean,sensor1mean,sensor2mean,worstCasemean];
+% str = {'Bestcase'; strcat('Fuse-',featureVectorPolicy); 'Sensor1';'Sensor2';'Worstcase'};
+% graph = (1-(showResult-bestCasemean)/(worstCasemean-bestCasemean));
+% figure(),
+% bar(graph),set(gca,'XTickLabel',str);
+% title('Overall Performacne')
+% for i1=1:numel(graph)
+%     text(i1,graph(i1),num2str(100*graph(i1),'%0.2f%%'),...
+%                'HorizontalAlignment','center',...
+%                'VerticalAlignment','bottom')
+% end
