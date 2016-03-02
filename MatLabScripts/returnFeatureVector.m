@@ -9,7 +9,7 @@ end
 
 if strcmp(type,'default')
     featureVector = zeros(1,11);
-    featureVector(1:3) = givenHand.position./100;
+    featureVector(1:3) = givenHand.position;
     basis = inv(givenHand.orientation);
     featureVector(4:6) = -basis(2,:);
     featureVector(7:9) = -basis(3,:);
@@ -18,7 +18,7 @@ if strcmp(type,'default')
 elseif strcmp(type,'trend')
     %% Trend policy
     featureVector = zeros(1,11);
-    featureVector(1:3) = givenHand.position./100;
+    featureVector(1:3) = givenHand.position;
     basis = inv(givenHand.orientation);
     featureVector(4:6) = -basis(2,:);
     featureVector(7:9) = -basis(3,:);
