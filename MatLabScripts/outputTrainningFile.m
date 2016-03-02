@@ -47,9 +47,9 @@ for i=1:numOftraningFiles
             if k == minIndex
                 trainingMatrix(end+1,:) = [1,featureMatrix(k,:)];
             elseif k ~= realmax;
-                trainingMatrix(end+1,:) = [-1,featureMatrix(k,:)];
+                trainingMatrix(end+1,:) = [0,featureMatrix(k,:)];
             end
         end
     end
 end
-dlmwrite('twosensors.txt',[trainingMatrix(:,2:end),trainingMatrix(:,1)])
+dlmwrite('twosensors.csv',[trainingMatrix(:,2:end),trainingMatrix(:,1)])
