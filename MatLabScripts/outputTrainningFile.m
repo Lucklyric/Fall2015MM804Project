@@ -52,5 +52,4 @@ for i=1:numOftraningFiles
         end
     end
 end
-
-csvwrite('twosensors.csv',[trainingMatrix(:,2:end),trainingMatrix(:,1)]);
+dlmwrite('twosensors.csv',[trainingMatrix(:,2:end),trainingMatrix(:,1)])
