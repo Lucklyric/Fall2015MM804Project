@@ -52,4 +52,4 @@ for i=1:numOftraningFiles
         end
     end
 end
-dlmwrite('twosensors.csv',[trainingMatrix(:,2:end),trainingMatrix(:,1)])
+dlmwrite('twosensors.txt',[trainingMatrix(:,2:end),trainingMatrix(:,1)])
