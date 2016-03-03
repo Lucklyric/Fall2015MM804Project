@@ -1,6 +1,8 @@
 clear;
-snapMatFileNames = {'open2SnapA','pinch2SnapA','grab2SnapA'}; % Training File name list for ground Truth
-motionMatFileNames = {'open2DataA','pinch2DataA','grab2DataA'}; % Training File name list for motion data
+%snapMatFileNames = {'open2SnapA','pinch2SnapA','grab2SnapA'}; % Training File name list for ground Truth
+%motionMatFileNames = {'open2DataA','pinch2DataA','grab2DataA'}; % Training File name list for motion data
+snapMatFileNames = {'openSnapA','pinchSnapA','grabSnapA'}; % Training File name list for ground Truth
+motionMatFileNames = {'openDataA','pinchDataA','grabDataA'}; % Training File name list for motion data
 featureVectorPolicy = 'default'; %'default','trend' % default is original version and trend is SSF version
 featureSize = 11;
 sideLength = 0;
@@ -52,4 +54,4 @@ for i=1:numOftraningFiles
         end
     end
 end
-dlmwrite('twosensors.csv',[trainingMatrix(:,2:end),trainingMatrix(:,1)])
+dlmwrite('twosensors2.csv',[trainingMatrix(:,2:end),trainingMatrix(:,1)])
